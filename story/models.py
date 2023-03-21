@@ -29,11 +29,27 @@ class Category(models.Model):
 
 
 class Brand(models.Model):
-    pass
+    name = models.CharField(max_length=100, blank=False, null=False)
+    description = models.TextField(max_length=500, blank=True, null=False)
 
 
 class Specifications(models.Model):
-    pass
+    MATERIAL_CHOICES = [
+        ('Алюміній', 'Алюміній'),
+        ('Карбон', 'Карбон'),
+        ('Сталь', 'Сталь'),
+        ('Хром-Молібден (CrMo)', 'Хром-Молібден (CrMo)')
+    ]
+    BRAKES_CHOICE = [
+        ('Дискові механічні', 'Дискові механічні'),
+        ('Дискові гідравлічні', 'Дискові гідравлічні'),
+        ('Ободні V-brake', 'Ободні V-brake')
+    ]
+    material = models.CharField(max_length=50, blank=False, null=False, choices=MATERIAL_CHOICES)
+    wheel_diameter = models.FloatField(blank=True, null=True)
+    frame_size = models.CharField(max_length=64, blank=True, null=False)
+    type_of_brakes = models.CharField(max_length=64, blank=True, null=False)
+    amount_of_speeds = models.IntegerField(blank=True, null=True)
 
 
 class Product(models.Model):
@@ -46,5 +62,5 @@ class Product(models.Model):
     trending = models.BooleanField(default=False, help_text="0-defauld, 1-Trending")
     status = models.BooleanField(default=False, help_text="0-default, 1-Hidden")
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    specifications = models.ForeignKey(Specifications, on_delete=models.CASCADE)
+    specifications = models.OneToOneField(Specifications, on_delete=models.CASCADE)
     in_stock = models.BooleanField(default=True, help_text="is the product in stock")
