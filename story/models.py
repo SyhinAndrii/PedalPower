@@ -55,7 +55,7 @@ class Specifications(models.Model):
     amount_of_speeds = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.specifications.name
 
 
 class Product(models.Model):
@@ -68,7 +68,7 @@ class Product(models.Model):
     trending = models.BooleanField(default=False, help_text="0-defauld, 1-Trending")
     status = models.BooleanField(default=False, help_text="0-default, 1-Hidden")
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
-    specifications = models.OneToOneField(Specifications, on_delete=models.CASCADE)
+    specifications = models.OneToOneField(Specifications, on_delete=models.CASCADE, related_name='specifications')
     in_stock = models.BooleanField(default=True, help_text="is the product in stock")
 
     def __str__(self):
