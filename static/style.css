@@ -1,0 +1,4 @@
+.carousel-inner img {
+  height: 600px; /* set the height to your desired value */
+  object-fit: cover; /* preserve aspect ratio and cover the container */
+}
