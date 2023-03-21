@@ -5,14 +5,14 @@ from datetime import datetime
 
 
 def get_category_path(instance, filename):
-    now_time = datetime.now().strftime("%d_%m_%Y %H:%M:%S ")
+    now_time = datetime.now().strftime("%d_%m_%Y_%H:%M:%S ")
     filename = now_time + filename
     return os.path.join(f"uploads/category/", filename)
 
 
 def get_product_path(instance, filename):
-    now_time = datetime.now().strftime("%d_%m_%Y %H:%M:%S ")
-    filename = now_time + filename
+    now_time = datetime.now().strftime("%d_%m_%Y_%H:%M:%S ")
+    filename = now_time + instance.name
     return os.path.join(f"uploads/products/{instance.category.name}/", filename)
 
 
@@ -31,6 +31,9 @@ class Category(models.Model):
 class Brand(models.Model):
     name = models.CharField(max_length=100, blank=False, null=False)
     description = models.TextField(max_length=500, blank=True, null=False)
+
+    def __str__(self):
+        return self.name
 
 
 class Specifications(models.Model):
@@ -51,6 +54,9 @@ class Specifications(models.Model):
     type_of_brakes = models.CharField(max_length=64, blank=True, null=False)
     amount_of_speeds = models.IntegerField(blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
@@ -64,3 +70,6 @@ class Product(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     specifications = models.OneToOneField(Specifications, on_delete=models.CASCADE)
     in_stock = models.BooleanField(default=True, help_text="is the product in stock")
+
+    def __str__(self):
+        return self.name
