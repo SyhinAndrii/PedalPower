@@ -1,0 +1,35 @@
+{% extends "story/layouts/main.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>It is page Categories</h1>
+                <hr>
+                <div class="row">
+                    {% for item in categories %}
+                        <div class="col-md-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="{{ item.image.url }}"
+                                         class="card-img-top" alt="{{ item.name }}">
+                                </div>
+                                <h5 class="text-center">Card title</h5>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+{% endblock %}

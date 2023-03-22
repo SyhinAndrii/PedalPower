@@ -7,7 +7,7 @@ from datetime import datetime
 def get_category_path(instance, filename):
     now_time = datetime.now().strftime("%d_%m_%Y_%H:%M:%S ")
     filename = now_time + filename
-    return os.path.join(f"uploads/category/", filename)
+    return os.path.join("uploads/category/", filename)
 
 
 def get_product_path(instance, filename):
@@ -26,6 +26,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get_categories(cls):
+        return cls.objects.filter(status=0)
 
 
 class Brand(models.Model):
