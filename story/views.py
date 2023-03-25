@@ -15,11 +15,11 @@ def categories(request):
 
 
 def view_products(request, category_slug):
-    data = Product.get_products_by_category(category_slug)
+    data, category_name = Product.get_products_by_category(category_slug)
     if data:
-        category_name = Category.objects.filter(slug=category_slug).first()
-        context = {'products': data,
-                   'category_name': category_name, }
+        context = {
+            'products': data,
+            'category_name': category_name, }
         return render(request, "story/products/index.html", context=context)
 
     messages.warning(request, 'Категорію не знайдено')
@@ -28,4 +28,3 @@ def view_products(request, category_slug):
 
 def test(request):
     return render(request, "story/products/test.html")
-

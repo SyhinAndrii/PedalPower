@@ -76,7 +76,10 @@ class Product(models.Model):
         return self.name
 
     @classmethod
-    def get_products_by_category(cls, slug):
-        if Category.objects.filter(slug=slug, status=0):
-            return cls.objects.filter(category__slug=slug)
-        return None
+    def get_products_by_category(cls, category_slug):
+        if Category.objects.filter(slug=category_slug, status=0):
+            data = cls.objects.filter(category__slug=category_slug)
+            category_name = Category.objects.filter(slug=category_slug).first()
+            return data, category_name
+        return None, None
+
