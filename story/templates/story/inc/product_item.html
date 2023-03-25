@@ -1,14 +1,22 @@
 <p>{{ category_slug }}</p>
 {% for product in products %}
-    <div class="col-md-3">
-        <a href="#">
-            <div class="card">
-                <div class="card-body">
-                    <img src="{{ product.product_image.url }}"
-                         class="card-img-top" alt="{{ product.name }}">
-                </div>
-                <h5 class="text-center">{{ product.name }}</h5>
-
+    <div class="product-item  col-md-3">
+        <a class="d-flex flex-column" href="#">
+            <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="card-img-top">
+            <div class="card-body  text-center">
+                <h3 class="card-title">{{ product.name }}</h3>
+                <p class="card-text">
+                    <span class="original-price">${{ product.original_price }}</span>
+                    <span class="selling-price">${{ product.selling_price }}</span>
+                    <div class="star-rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                </p>
+                <a href="#" class="btn btn-primary ">Додати до кошика</a>
             </div>
         </a>
     </div>

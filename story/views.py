@@ -24,3 +24,8 @@ def view_products(request, category_slug):
 
     messages.warning(request, 'Категорію не знайдено')
     return redirect("categories")
+
+
+def test(request):
+    return render(request, "story/products/test.html")
+
