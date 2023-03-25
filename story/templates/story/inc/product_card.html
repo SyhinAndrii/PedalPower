@@ -1,7 +1,6 @@
-<p>{{ category_slug }}</p>
 {% for product in products %}
     <div class="product-item  col-md-3">
-        <a class="d-flex flex-column" href="#">
+        <a class="d-flex flex-column" href=" {% url 'product view' product.category.slug product.pk %} ">
             <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="card-img-top">
             <div class="card-body  text-center">
                 <h3 class="card-title">{{ product.name }}</h3>

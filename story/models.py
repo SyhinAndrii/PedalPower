@@ -79,7 +79,11 @@ class Product(models.Model):
     def get_products_by_category(cls, category_slug):
         if Category.objects.filter(slug=category_slug, status=0):
             data = cls.objects.filter(category__slug=category_slug)
-            category_name = Category.objects.filter(slug=category_slug).first()
-            return data, category_name
+            category = Category.objects.filter(slug=category_slug).first()
+            return data, category
         return None, None
 
+    @classmethod
+    def get_product_by_id(cls, product_id):
+        product = cls.objects.get(pk=product_id)
+        return product

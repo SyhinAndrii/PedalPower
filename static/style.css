@@ -41,13 +41,13 @@ a {
     margin-bottom: 10px;
 }
 
-.product-item .original-price {
+.original-price {
     text-decoration: line-through;
-    margin-right: 10px;
+    margin-right: 30px;
     color: #888;
 }
 
-.product-item .selling-price {
+.selling-price {
     font-size: 20px;
     font-weight: bold;
     color: #f00;

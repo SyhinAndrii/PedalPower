@@ -1,0 +1,37 @@
+{% extends "story/layouts/main.html" %}
+
+{% block content %}
+    {% include 'story/inc/product_detail_review.html' %}
+
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs nav-fill">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#details-tab" data-toggle="tab">Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#characteristics-tab" data-toggle="tab">Characteristics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reviews-tab" data-toggle="tab">Reviews</a>
+                    </li>
+                </ul>
+                <div class="tab-content mt-4">
+                    <div class="tab-pane active" id="details-tab">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor euismod urna, sed
+                            tristique lectus pretium in. Proin in purus eget ante finibus feugiat ac nec sapien. Etiam
+                            auctor vel justo a faucibus.</p>
+                    </div>
+                    {% include "story/inc/product_characteristics.html" %}
+                    {% include "story/inc/reviews.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#    <script src="https://kit.fontawesome.com/1234567890.js" crossorigin="anonymous"></script>#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>#}
+
+{% endblock %}
