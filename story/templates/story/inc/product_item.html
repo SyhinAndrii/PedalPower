@@ -1,0 +1,15 @@
+<p>{{ category_slug }}</p>
+{% for product in products %}
+    <div class="col-md-3">
+        <a href="#">
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{ product.product_image.url }}"
+                         class="card-img-top" alt="{{ product.name }}">
+                </div>
+                <h5 class="text-center">{{ product.name }}</h5>
+
+            </div>
+        </a>
+    </div>
+{% endfor %}
