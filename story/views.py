@@ -15,5 +15,7 @@ def categories(request):
 
 def view_products(request, category_slug):
     data = Product.objects.filter(category__slug=category_slug)
-    context = {'products': data}
+    context = {'product_id': category_slug,
+               'products': data,
+               }
     return render(request, "story/products/index.html", context=context)
