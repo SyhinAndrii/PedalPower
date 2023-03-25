@@ -13,7 +13,7 @@ def get_category_path(instance, filename):
 def get_product_path(instance, filename):
     now_time = datetime.now().strftime("%d_%m_%Y_%H:%M:%S ")
     filename = now_time + instance.name
-    return os.path.join(f"uploads/products/{instance.category.name}/", filename)
+    return os.path.join(f"uploads/products/{instance.category.slug}/", filename)
 
 
 class Category(models.Model):
