@@ -74,3 +74,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+    @classmethod
+    def get_products_by_category(cls, slug):
+        if Category.objects.filter(slug=slug, status=0):
+            return cls.objects.filter(category__slug=slug)
+        return None
