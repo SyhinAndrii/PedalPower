@@ -1,10 +1,23 @@
 {% extends "story/layouts/main.html" %}
 
+
+
 {% block content %}
+
+
     <div class="container">
         <div class="row">
+            {#        start breadcrumb#}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'categories' %}">Categories</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ category_name.name }}</li>
+                </ol>
+            </nav>
+            {#            end breadcrumb#}
             <div class="col-md-12">
-                <h1>It is page with Products</h1>
+                <h1>{{ category_name.name }}</h1>
                 <hr>
                 <div class="row">
                     {% include "story/inc/product_item.html" %}
