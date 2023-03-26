@@ -1,29 +1,33 @@
 <div class="container my-5">
     <div class="row">
-        <div class="col-md-6">
+        <div class="product_photo col-md-6">
+            {% if product.trending %}
+            <span class="badge bg-danger ">Trending</span>
+            {% endif %}
+
             <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="w-100">
         </div>
         <div class="info_product_wrapper col-md-6 ">
             <h2 class="mb-3">{{ product.name }}</h2>
-            <div class="mb-4">
-                <span class="mr-2"><i class="fa fa-star"></i></span>
-                <span class="mr-2"><i class="fa fa-star"></i></span>
-                <span class="mr-2"><i class="fa fa-star"></i></span>
-                <span class="mr-2"><i class="fa fa-star"></i></span>
-                <span><i class="fa fa-star-half-alt"></i></span>
+            <div class=" stars mb-4">
+                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
+                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
+                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
+                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
+                <span><i class="fa-solid fa-star-half-alt"></i></span>
                 <span class="ml-2 text-muted">(4.5)</span>
             </div>
             <span class="price_title">Ціна:</span>
             <span class="selling-price">{{ product.selling_price }}</span>
             <span class="original-price">{{ product.original_price }}</span>
 
-
-            <button class="btn btn-primary btn-lg d-block mt-4">Add to Cart</button>
+            <button class="btn btn-primary btn-lg d-block mt-4">Add to Cart <span><i
+                    class="fa-solid fa-basket-shopping"></i></span></button>
             <div class="in_stock mt-5 ">
                 {% if product.in_stock %}
-                    <p class="badge bg-success">В наявності</p>
+                    <p class="badge bg-success">IN STOCK</p>
                 {% else %}
-                    <p class="badge bg-secondary">В наявності</p>
+                    <p class="badge bg-secondary">OUT STOCK</p>
                 {% endif %}
             </div>
 

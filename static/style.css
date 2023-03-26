@@ -76,3 +76,25 @@ a {
 .product_item_image{
     width: 100%;
 }
+
+span.badge{
+    font-size: 100%;
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
+
+.product_photo{
+    position: relative;
+}
+
+
+
+/*stars styles*/
+i.fa-star, i.fa-star-half-alt {
+    color: #f0e800;
+}
+i.fa-basket-shopping {
+    color: white;
+}
