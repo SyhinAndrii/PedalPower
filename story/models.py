@@ -85,5 +85,7 @@ class Product(models.Model):
 
     @classmethod
     def get_product_by_id(cls, product_id):
-        product = cls.objects.get(pk=product_id)
+        product = cls.objects.get(pk=product_id, status=0)
         return product
+
+

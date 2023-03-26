@@ -66,3 +66,13 @@ a {
   height: 20px;
   line-height: 20px;
 }
+
+/*styles for product page*/
+.info_product_wrapper span.price_title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.product_item_image{
+    width: 100%;
+}

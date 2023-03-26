@@ -1,16 +1,10 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-6">
-            <img src="https://via.placeholder.com/500x500" alt="Product Image" class="img-fluid">
+            <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="w-100">
         </div>
-        <div class="col-md-6">
-            <h2 class="mb-3">Product Name</h2>
-            <span class="original-price">$55</span>
-            <span class="selling-price">$48</span>
-            <hr>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor euismod urna,
-                sed tristique lectus pretium in. Proin in purus eget ante finibus feugiat ac nec sapien. Etiam
-                auctor vel justo a faucibus.</p>
+        <div class="info_product_wrapper col-md-6 ">
+            <h2 class="mb-3">{{ product.name }}</h2>
             <div class="mb-4">
                 <span class="mr-2"><i class="fa fa-star"></i></span>
                 <span class="mr-2"><i class="fa fa-star"></i></span>
@@ -19,7 +13,12 @@
                 <span><i class="fa fa-star-half-alt"></i></span>
                 <span class="ml-2 text-muted">(4.5)</span>
             </div>
-            <button class="btn btn-primary btn-lg">Add to Cart</button>
+            <span class="price_title">Ціна:</span>
+            <span class="selling-price">{{ product.selling_price }}</span>
+            <span class="original-price">{{ product.original_price }}</span>
+
+
+            <button class="btn btn-primary btn-lg d-block mt-4">Add to Cart</button>
             <div class="in_stock mt-5 ">
                 {% if product.in_stock %}
                     <p class="badge bg-success">В наявності</p>

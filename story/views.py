@@ -22,16 +22,17 @@ def view_products(request, category_slug):
             'category': category, }
         return render(request, "story/products/index.html", context=context)
 
-    messages.warning(request, 'Категорію не знайдено')
     return redirect("categories")
 
 
 def product_details_view(request, category_slug, product_id):
-    context = {
-        'product': Product.get_product_by_id(product_id)
-    }
-    return render(request, "story/products/product_page.html", context=context)
-
+    product = Product.get_product_by_id(product_id)
+    if product:
+        context = {
+            'product': product
+        }
+        return render(request, "story/products/product_page.html", context=context)
+    return redirect(request, 'categories')
 
 def test(request):
     return render(request, "story/products/test.html")

@@ -1,6 +1,23 @@
 {% extends "story/layouts/main.html" %}
 
 {% block content %}
+    {#        start breadcrumb#}
+    <div class="container">
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'categories' %}">Categories</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'products' product.category.slug %}">{{ product.category.name }}</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    {#            end breadcrumb#}
+
+
     {% include 'story/inc/product_detail_review.html' %}
 
     <hr>
@@ -25,13 +42,13 @@
                             auctor vel justo a faucibus.</p>
                     </div>
                     {% include "story/inc/product_characteristics.html" %}
-                    {% include "story/inc/reviews.html" %}
+                    {% include "story/inc/user_reviews.html" %}
                 </div>
             </div>
         </div>
     </div>
 
-{#    <script src="https://kit.fontawesome.com/1234567890.js" crossorigin="anonymous"></script>#}
-{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>#}
+    {#    <script src="https://kit.fontawesome.com/1234567890.js" crossorigin="anonymous"></script>#}
+    {#    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>#}
 
 {% endblock %}
