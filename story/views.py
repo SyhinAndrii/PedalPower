@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Category, Product

@@ -1,8 +1,9 @@
 <div class="container my-5">
+
     <div class="row">
         <div class="product_photo col-md-6">
             {% if product.trending %}
-            <span class="badge bg-danger ">Trending</span>
+                <span class="badge bg-danger ">Trending</span>
             {% endif %}
 
             <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="w-100">
@@ -21,7 +22,8 @@
             <span class="selling-price">{{ product.selling_price }}</span>
             <span class="original-price">{{ product.original_price }}</span>
 
-            <button class="btn btn-primary btn-lg d-block mt-4">Add to Cart <span><i
+            <button onclick="addToCart({{ product.pk }})" class="btn btn-primary btn-lg d-block mt-4" >
+                Add to Cart <span><i
                     class="fa-solid fa-basket-shopping"></i></span></button>
             <div class="in_stock mt-5 ">
                 {% if product.in_stock %}
