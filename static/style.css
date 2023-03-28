@@ -7,7 +7,12 @@ a {
     font-size: 25px;
     margin-left: 20px;
 }
+.my-form{
+    width: 50%;
+    margin: 0 auto;
+}
 
+/*/navbar style end*/
 .carousel-inner img {
     height: 600px; /* set the height to your desired value */
     object-fit: cover; /* preserve aspect ratio and cover the container */

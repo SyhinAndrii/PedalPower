@@ -38,7 +38,7 @@ function getCartItems() {
         // ...
         cartItems.push(cartItem);
     }
-
+    console.log(cartItems)
     return cartItems;
 }
 

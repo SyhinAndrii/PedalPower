@@ -21,6 +21,8 @@ from . import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('', include('story.urls')),
+    path('', include('authentication.urls')),
+
 ]
 
 if settings.DEBUG:

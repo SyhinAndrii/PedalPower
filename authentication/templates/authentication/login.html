@@ -1,0 +1,14 @@
+{% extends 'story/layouts/main.html' %}
+
+{% block content %}
+
+
+<div class="container">
+    <h2>Вхід</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Увійти</button>
+    </form>
+</div>
+{% endblock %}
