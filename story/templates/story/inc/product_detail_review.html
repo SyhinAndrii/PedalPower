@@ -22,9 +22,9 @@
             <span class="selling-price">{{ product.selling_price }}</span>
             <span class="original-price">{{ product.original_price }}</span>
 
-            <button onclick="addToCart({{ product.pk }})" class="btn btn-primary btn-lg d-block mt-4" >
+            <a href="{% url 'add to cart' product.pk %}" class="btn btn-primary btn-lg d-block mt-4" >
                 Add to Cart <span><i
-                    class="fa-solid fa-basket-shopping"></i></span></button>
+                    class="fa-solid fa-basket-shopping"></i></span></a>
             <div class="in_stock mt-5 ">
                 {% if product.in_stock %}
                     <p class="badge bg-success">IN STOCK</p>

@@ -1,5 +1,6 @@
 import os.path
 
+from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
 
@@ -89,3 +90,18 @@ class Product(models.Model):
         return product
 
 
+class Cart(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    product = models.ManyToManyField(Product)
+
+    @classmethod
+    def add_product_to_cart(cls, user, product_id):
+        product = Product.get_product_by_id(product_id)
+        obj, created = Cart.objects.get_or_create(user=user)
+        obj.product.add(product)
+
+    @classmethod
+    def get_cart_products(cls, user):
+        user_cart = Cart.objects.get(user=user)
+        products = user_cart.product.all()
+        return products

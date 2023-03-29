@@ -1,6 +1,5 @@
 import json
 
-from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Category, Product
 
@@ -35,6 +34,7 @@ def product_details_view(request, category_slug, product_id):
         }
         return render(request, "story/products/product_page.html", context=context)
     return redirect(request, 'categories')
+
 
 def test(request):
     return render(request, "story/products/test.html")
