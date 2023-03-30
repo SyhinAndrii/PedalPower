@@ -22,9 +22,14 @@
             <span class="selling-price">{{ product.selling_price }}</span>
             <span class="original-price">{{ product.original_price }}</span>
 
-            <a href="{% url 'add to cart' product.pk %}" class="btn btn-primary btn-lg d-block mt-4" >
-                Add to Cart <span><i
-                    class="fa-solid fa-basket-shopping"></i></span></a>
+            <form class="d-flex mt-4" method="post" action="{% url 'add to cart' product.pk %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="number" class="form-control" id="quantity" name="quantity" min="1" max="10" value="1">
+                </div>
+                <button type="submit"  class="ml-4 btn btn-primary add_to_cart">Add to cart</button>
+            </form>
+
             <div class="in_stock mt-5 ">
                 {% if product.in_stock %}
                     <p class="badge bg-success">IN STOCK</p>

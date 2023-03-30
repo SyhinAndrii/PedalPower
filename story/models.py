@@ -92,16 +92,36 @@ class Product(models.Model):
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    product = models.ManyToManyField(Product)
+    product = models.ManyToManyField(Product, through="CartItem")
 
     @classmethod
-    def add_product_to_cart(cls, user, product_id):
+    def add_product_to_cart(cls, user, product_id, product_count):
         product = Product.get_product_by_id(product_id)
-        obj, created = Cart.objects.get_or_create(user=user)
-        obj.product.add(product)
+        cart, created = Cart.objects.get_or_create(user=user)
+        cart_item, item_created = CartItem.objects.get_or_create(cart=cart, product=product)
+        cart_item.quantity = product_count
+        cart_item.save()
 
     @classmethod
-    def get_cart_products(cls, user):
-        user_cart = Cart.objects.get(user=user)
-        products = user_cart.product.all()
-        return products
+    def remove_item(cls, product_id):
+        CartItem.objects.get(product_id=product_id).delete()
+
+    @classmethod
+    def get_cart_items(cls, user):
+        user_cart, created = Cart.objects.get_or_create(user=user)
+        cart_items = user_cart.cartitem_set.all()
+
+        return cart_items
+
+    @classmethod
+    def get_total_price(cls, cart_items):
+        price = []
+        for item in cart_items:
+            price.append(item.product.selling_price * item.quantity)
+        return sum(price)
+
+
+class CartItem(models.Model):
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
