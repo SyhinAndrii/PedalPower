@@ -1,42 +1,120 @@
+body {
+    background-color: #c9efc7;
+}
+
 a {
     text-decoration: none !important;
 }
 
-/*navbar style*/
-.nav-item i {
-    font-size: 25px;
-    margin-left: 20px;
+h1 {
+    color: rgb(9, 106, 46);
+    margin-bottom: 20px;
 }
+
+
+/*-------------------NAVBAR START----------------------*/
+.navbar {
+    background-color: rgb(80 160 96);
+    padding: 10px;
+
+    font-size: 140%;
+
+}
+
+.logo-image {
+    width: 90px;
+    height: auto;
+}
+
+.navbar a.nav-link {
+    color: white;
+    font-weight: normal;
+}
+
+.navbar a.nav-link.active {
+    font-weight: bold;
+    color: rgb(9, 106, 46);
+}
+
+.navbar a.nav-link:hover {
+    transform: scale(1.1);
+    color: rgb(9, 106, 46);
+}
+
 
 .my-form {
     width: 50%;
     margin: 0 auto;
 }
 
-/*/navbar style end*/
-.carousel-inner img {
-    height: 600px; /* set the height to your desired value */
-    object-fit: cover; /* preserve aspect ratio and cover the container */
+.navbar-brand p {
+    font-family: 'Faster One', cursive;
+    font-size: 45px;
+    margin: 0;
+    color: rgb(9, 106, 46);
+    line-height: 0.75em;
 }
 
-.product-item {
-    margin: 20px;
+#pedal {
+    color: rgb(9, 106, 46);
+}
+
+#power {
+    color: white;
+}
+
+.user_btn {
+    color: white;
+}
+
+.user_btn:hover {
+    color: rgb(9, 106, 46);
+
+}
+
+
+/***********************BREADCRUMB START****************************/
+
+.breadcrumb {
+    font-size: 120%;
+    margin-bottom: 30px;
+}
+
+.breadcrumb-item a {
+    color: rgb(9, 106, 46);
+}
+
+.breadcrumb-item.active {
+    color: #529b52;
+}
+
+
+/***********************PRODUCT LIST START****************************/
+.card {
+    background-color: #bde9ba;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
 }
 
-.product-item:hover {
+.card:hover {
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
-.product-item .card-img-top {
-    max-height: 100%;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
+.category_item h5 {
+    color: rgb(9, 106, 46);
+    font-weight: bold;
+    font-size: 130%;
 }
+
+
+.carousel-inner img {
+    height: 600px; /* set the height to your desired value */
+    object-fit: cover; /* preserve aspect ratio and cover the container */
+    margin-bottom: 30px;
+}
+
 
 .product-item .card-body {
     padding: 10px;
@@ -44,9 +122,8 @@ a {
 }
 
 .product-item .card-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+    font-size: 1.4em;
+    color: rgb(9, 106, 46);
 }
 
 .product-item .card-text {
@@ -80,14 +157,17 @@ a {
     line-height: 20px;
 }
 
-/*styles for product page*/
+
+/***********************PRODUCT START****************************/
 .info_product_wrapper span.price_title {
     font-size: 20px;
     font-weight: bold;
 }
 
 .product_item_image {
-    width: 100%;
+    height: 200px; /* set the height to your desired value */
+
+    object-fit: scale-down; /* preserve aspect ratio and cover the container */
 }
 
 span.badge {
@@ -103,13 +183,48 @@ span.badge {
 
 .add_to_cart {
     margin-left: 15px;
+    font-size: 120%;
+    background-color: rgb(9, 106, 46);
+}
+.add_to_cart:hover{
+    background-color: rgb(12 158 68);
 }
 
-/*stars styles*/
+
+.product-item .add_to_cart {
+    width: 90%;
+}
+
+
+/***********************STARS START****************************/
 i.fa-star, i.fa-star-half-alt {
     color: #f0e800;
 }
 
 .info_product_wrapper i.fa-basket-shopping {
     color: white;
+}
+
+
+/***********************FOOTER START****************************/
+
+.bg-dark-green {
+    background-color: rgb(9, 106, 46);
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+footer a:hover {
+    color: #f2f2f2;
+}
+
+
+.payment {
+    font-size: 200%;
 }

@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row breadcrumb">
             {#        start breadcrumb#}
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -12,9 +12,9 @@
             </nav>
             {#            end breadcrumb#}
             <div class="col-md-12">
-                <h1>It is page Categories</h1>
+                <h1 class="text-center"> Categories</h1>
                 <hr>
-                <div class="row">
+                <div class="row align-content-center">
                     {% include "story/inc/category_item.html" %}
 
                 </div>

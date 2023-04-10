@@ -89,6 +89,11 @@ class Product(models.Model):
         product = cls.objects.get(pk=product_id, status=0)
         return product
 
+    @classmethod
+    def get_top_products(cls):
+        products = cls.objects.filter(trending=True)
+        return products
+
 
 class Cart(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

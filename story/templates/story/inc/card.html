@@ -2,9 +2,9 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Shopping Cart</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div>
+                <h1  >Shopping Cart</h1>
+
             </div>
             {% for item in cart_items %}
                 <div class="card">
@@ -29,12 +29,11 @@
             {% endfor %}
 
 
-            <div class="text-right mt-3">
-                <h2>Total: {{ total_price }}</h2>
-                <a href="#" class="btn btn-primary mr-2">Continue Shopping</a>
-                <a href="#" class="btn btn-success">Checkout</a>
+            <div class="d-flex flex-row  justify-content-around mt-5">
+                <h2 class="text-primary">Total: {{ total_price }}</h2>
+                <a href="#" class="btn btn-primary payment">Go to Payment</a>
             </div>
-            <ul id="cart-items"></ul>
+
 
 
         </div>

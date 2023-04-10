@@ -6,7 +6,11 @@ from .models import Category, Product
 
 # Create your views here.
 def home(request):
-    return render(request, "story/index.html")
+    top_bicycle = Product.get_top_products()
+    context = {
+        'products': top_bicycle,
+    }
+    return render(request, "story/index.html", context)
 
 
 def categories(request):
@@ -16,10 +20,10 @@ def categories(request):
 
 
 def view_products(request, category_slug):
-    data, category = Product.get_products_by_category(category_slug)
-    if data:
+    products, category = Product.get_products_by_category(category_slug)
+    if products:
         context = {
-            'products': data,
+            'products': products,
             'category': category, }
         return render(request, "story/products/index.html", context=context)
 

@@ -4,7 +4,9 @@ from .models import Product, Cart
 
 def cart_add(request, product_id):
     if request.user.is_authenticated:
-        product_count = int(request.POST['quantity'])
+        product_count = 1
+        if request.POST:
+            product_count = int(request.POST['quantity'])
         Cart.add_product_to_cart(request.user, product_id, product_count)
         return redirect('cart')
     else:
