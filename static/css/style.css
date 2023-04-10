@@ -121,9 +121,13 @@ h1 {
     margin-bottom: 10px;
 }
 
-.product-item .card-title {
+.card-title {
     font-size: 1.4em;
     color: rgb(9, 106, 46);
+}
+
+.card-title:hover {
+    color: rgb(12 158 68);
 }
 
 .product-item .card-text {
@@ -186,7 +190,8 @@ span.badge {
     font-size: 120%;
     background-color: rgb(9, 106, 46);
 }
-.add_to_cart:hover{
+
+.add_to_cart:hover {
     background-color: rgb(12 158 68);
 }
 
@@ -224,7 +229,23 @@ footer a:hover {
     color: #f2f2f2;
 }
 
+.card_receipt {
+    background-color: #b2deaf;
+    width: 50%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: rgb(9, 106, 46);
+}
 
-.payment {
+
+/***********************PAYMENT START****************************/
+
+.payment-btn {
     font-size: 200%;
+    background-color: rgb(9, 106, 46);
+}
+
+.payment-btn:hover {
+    background-color: rgb(12 158 68);
 }

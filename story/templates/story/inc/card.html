@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div>
-                <h1  >Shopping Cart</h1>
+                <h1>Shopping Cart</h1>
 
             </div>
             {% for item in cart_items %}
@@ -14,7 +14,7 @@
                                 <img src="{{ item.product.product_image.url }}" alt="Product Image" class="img-fluid">
                             </div>
                             <div class="col-sm-6">
-                                <h4 class="card-title"><a
+                                <h4><a class="card-title"
                                         href="{% url 'product view' item.product.category.slug item.product.pk %}">{{ item.product.name }}</a>
                                 </h4>
                                 <p class="card-text">Price: {{ item.product.selling_price }}</p>
@@ -29,9 +29,9 @@
             {% endfor %}
 
 
-            <div class="d-flex flex-row  justify-content-around mt-5">
-                <h2 class="text-primary">Total: {{ total_price }}</h2>
-                <a href="#" class="btn btn-primary payment">Go to Payment</a>
+            <div class="d-flex flex-row  justify-content-around mt-5 align-items-center card_receipt">
+                <h2 class="m-0">Total: {{ total_price }}</h2>
+                <a href="#" class="btn btn-primary payment-btn">Go to Payment</a>
             </div>
 
 
