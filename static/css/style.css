@@ -141,9 +141,8 @@ h1 {
 }
 
 .selling-price {
-    font-size: 20px;
     font-weight: bold;
-    color: #f00;
+    color: black;
 }
 
 .product-item .star-rating {
@@ -244,8 +243,31 @@ footer a:hover {
 .payment-btn {
     font-size: 200%;
     background-color: rgb(9, 106, 46);
+    color:white;
 }
 
 .payment-btn:hover {
     background-color: rgb(12 158 68);
+    color:white;
+}
+
+.payment-page {
+	padding: 50px;
+}
+
+.payment-page h1 {
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+.form-group label {
+	font-weight: bold;
+}
+
+.form-control {
+	background-color: #fff;
+	color: rgb(12 158 68);
 }

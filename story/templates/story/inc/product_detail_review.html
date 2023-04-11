@@ -19,7 +19,7 @@
                 <span class="ml-2 text-muted">(4.5)</span>
             </div>
             <span class="price_title">Ціна:</span>
-            <span class="selling-price">{{ product.selling_price }}</span>
+            <span class="selling-price fs-3">{{ product.selling_price }}</span>
             <span class="original-price">{{ product.original_price }}</span>
 
             <form class="d-flex mt-4" method="post" action="{% url 'add to cart' product.pk %}">

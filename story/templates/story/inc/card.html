@@ -7,7 +7,7 @@
 
             </div>
             {% for item in cart_items %}
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
@@ -15,13 +15,23 @@
                             </div>
                             <div class="col-sm-6">
                                 <h4><a class="card-title"
-                                        href="{% url 'product view' item.product.category.slug item.product.pk %}">{{ item.product.name }}</a>
+                                       href="{% url 'product view' item.product.category.slug item.product.pk %}">{{ item.product.name }}</a>
                                 </h4>
-                                <p class="card-text">Price: {{ item.product.selling_price }}</p>
-                                <p class="card-text">Quantity: {{ item.quantity }}</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Price:</p>
+                                        <h3 class="selling-price">{{ item.product.selling_price }}</h3>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>Quantity:</p>
+                                        <h3 class="selling-price">{{ item.quantity }}</h3>
+                                    </div>
+
+                                </div>
+
                             </div>
                             <div class="col-sm-3 text-right">
-                                <a href="{% url "cart remove" item.product.pk%}" class="btn btn-danger">Remove</a>
+                                <a href="{% url "cart remove" item.product.pk %}" class="btn btn-danger">Remove</a>
                             </div>
                         </div>
                     </div>
@@ -30,10 +40,9 @@
 
 
             <div class="d-flex flex-row  justify-content-around mt-5 align-items-center card_receipt">
-                <h2 class="m-0">Total: {{ total_price }}</h2>
-                <a href="#" class="btn btn-primary payment-btn">Go to Payment</a>
+                <h2 class="m-0 selling-price">Total: {{ total_price }}</h2>
+                <a href="{% url 'payment' %}" class="btn btn-primary payment-btn">Go to Payment</a>
             </div>
-
 
 
         </div>

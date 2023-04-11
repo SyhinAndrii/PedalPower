@@ -1,7 +1,7 @@
 import json
 
 from django.shortcuts import render, redirect
-from .models import Category, Product
+from .models import Category, Product, Cart
 
 
 # Create your views here.
@@ -40,5 +40,24 @@ def product_details_view(request, category_slug, product_id):
     return redirect(request, 'categories')
 
 
-def test(request):
-    return render(request, "story/products/test.html")
+def payment(request):
+    cart_items = Cart.get_cart_items(request.user)
+    context = {
+        "cart_items": cart_items,
+        'total_price': Cart.get_total_price(cart_items)
+    }
+    return render(request, "story/inc/payment.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+

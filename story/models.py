@@ -108,8 +108,8 @@ class Cart(models.Model):
         cart_item.save()
 
     @classmethod
-    def remove_item(cls, product_id):
-        CartItem.objects.get(product_id=product_id).delete()
+    def remove_item(cls, product_id, cart):
+        CartItem.objects.get(product_id=product_id, cart=cart).delete()
 
     @classmethod
     def get_cart_items(cls, user):
