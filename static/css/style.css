@@ -211,30 +211,32 @@ i.fa-star, i.fa-star-half-alt {
 
 
 /***********************FOOTER START****************************/
-
+.footer{
+    margin-top: 150px;
+}
 .bg-dark-green {
-    background-color: rgb(9, 106, 46);
+    background-color: #2e2e2e;
 }
 
 .text-white {
     color: #ffffff;
 }
 
-footer a {
+.footer a {
     color: #ffffff;
 }
 
-footer a:hover {
+.footer a:hover {
     color: #f2f2f2;
 }
 
 .card_receipt {
     background-color: #b2deaf;
-    width: 50%;
+
     margin: 30px auto;
     padding: 20px;
     border-radius: 10px;
-    color: rgb(9, 106, 46);
+    color: black;
 }
 
 
@@ -252,7 +254,7 @@ footer a:hover {
 }
 
 .payment-page {
-	padding: 50px;
+	padding: 10px;
 }
 
 .payment-page h1 {
@@ -270,4 +272,8 @@ footer a:hover {
 .form-control {
 	background-color: #fff;
 	color: rgb(12 158 68);
+}
+.order_summary{
+    height: 400px;
+    overflow-y: scroll;
 }

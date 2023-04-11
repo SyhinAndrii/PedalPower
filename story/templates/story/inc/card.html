@@ -1,7 +1,13 @@
 {% extends "story/layouts/main.html" %}
 {% block content %}
     <div class="container">
-        <div class="row">
+        <div class="row breadcrumb">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Cart</li>
+                </ol>
+            </nav>
             <div>
                 <h1>Shopping Cart</h1>
 
