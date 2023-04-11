@@ -160,14 +160,14 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    subtotal = models.DecimalField(max_digits=10, decimal_places=2)
+
 
     def save(self, *args, **kwargs):
         self.subtotal = self.price * self.quantity
         super(OrderItem, self).save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.product_name} ({self.quantity})'
+        return f'{self.product.name} ({self.quantity})'
 
 
 
