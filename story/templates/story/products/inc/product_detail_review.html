@@ -1,6 +1,6 @@
 <div class="container my-5">
 
-    <div class="row">
+    <div class="row ">
         <div class="product_photo col-md-6">
             {% if product.trending %}
                 <span class="badge bg-danger ">Trending</span>
@@ -18,9 +18,9 @@
                 <span><i class="fa-solid fa-star-half-alt"></i></span>
                 <span class="ml-2 text-muted">(4.5)</span>
             </div>
-            <span class="price_title">Ціна:</span>
-            <span class="selling-price fs-3">{{ product.selling_price }}</span>
-            <span class="original-price">{{ product.original_price }}</span>
+
+            <div class="selling-price fs-3 d-inline">${{ product.selling_price|stringformat:'d' }}</div>
+            <div class="d-inline original-price fs-5">${{ product.original_price|stringformat:'d' }}</div>
 
             <form class="d-flex mt-4" method="post" action="{% url 'add to cart' product.pk %}">
                 {% csrf_token %}

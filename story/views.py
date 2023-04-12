@@ -1,4 +1,4 @@
-import json
+
 
 from django.shortcuts import render, redirect
 from .models import Category, Product, Cart, Order, CartItem, OrderItem

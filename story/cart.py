@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Product, Cart
+from django.contrib import messages
 
 
 def cart_add(request, product_id):
@@ -8,7 +9,10 @@ def cart_add(request, product_id):
         if request.POST:
             product_count = int(request.POST['quantity'])
         Cart.add_product_to_cart(request.user, product_id, product_count)
-        return redirect('cart')
+
+        messages.success(request, f'Added to cart successfully')
+        return redirect(request.META.get('HTTP_REFERER'))
+
     else:
         print('Login to continue')
         return redirect('login')

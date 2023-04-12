@@ -1,5 +1,5 @@
 body {
-    background-color: #ecfdea;
+    background-color: #ffffff;
 }
 
 a {
@@ -91,15 +91,15 @@ h1 {
 
 /***********************PRODUCT LIST START****************************/
 .card {
-    background-color: #bde9ba;
+    background-color: #fffdfd;
     border: 1px solid #ccc;
     border-radius: 5px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease-in-out;
 }
 
 .card:hover {
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 
 .category_item h5 {
@@ -136,13 +136,14 @@ h1 {
 
 .original-price {
     text-decoration: line-through;
-    margin-right: 30px;
     color: #888;
+    padding-left: 10px;
 }
 
 .selling-price {
     font-weight: bold;
     color: black;
+    padding-left: 10px;
 }
 
 .product-item .star-rating {
@@ -211,9 +212,10 @@ i.fa-star, i.fa-star-half-alt {
 
 
 /***********************FOOTER START****************************/
-.footer{
+.footer {
     margin-top: 150px;
 }
+
 .bg-dark-green {
     background-color: #2e2e2e;
 }
@@ -245,35 +247,43 @@ i.fa-star, i.fa-star-half-alt {
 .payment-btn {
     font-size: 200%;
     background-color: rgb(9, 106, 46);
-    color:white;
+    color: white;
 }
 
 .payment-btn:hover {
     background-color: rgb(12 158 68);
-    color:white;
+    color: white;
 }
 
 .payment-page {
-	padding: 10px;
+    padding: 10px;
 }
 
 .payment-page h1 {
-	margin-bottom: 50px;
-	text-align: center;
+    margin-bottom: 50px;
+    text-align: center;
 }
 
-.form-group{
+.payment-page .form-group {
     margin-bottom: 20px;
 }
+
 .form-group label {
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .form-control {
-	background-color: #fff;
-	color: rgb(12 158 68);
+    background-color: #fff;
+    color: rgb(12 158 68);
 }
-.order_summary{
+
+.order_summary {
     height: 400px;
     overflow-y: scroll;
+}
+
+.ajs-success {
+    color: black !important;
+    background-color: white !important;
+    border-radius: 20px !important;
 }

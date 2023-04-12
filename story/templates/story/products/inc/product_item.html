@@ -6,8 +6,8 @@
                     <img src="{{ product.product_image.url }}" alt="{{ product.name }}" class="product_item_image">
                     <h3 class="card-title mt-3 mb-2 ">{{ product.name }}</h3>
                     <div class="card-text">
-                        <span class="original-price">${{ product.original_price }}</span>
-                        <span class="selling-price fs-5">${{ product.selling_price }}</span>
+                        <span class="original-price">${{ product.original_price|stringformat:'d' }}</span>
+                        <span class="selling-price fs-5">${{ product.selling_price|stringformat:'d' }}</span>
                         <div class="star-rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
