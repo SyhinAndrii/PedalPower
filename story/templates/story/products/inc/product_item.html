@@ -8,12 +8,15 @@
                     <div class="card-text">
                         <span class="original-price">${{ product.original_price|stringformat:'d' }}</span>
                         <span class="selling-price fs-5">${{ product.selling_price|stringformat:'d' }}</span>
-                        <div class="star-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-half-o"></i>
-                            <i class="fa fa-star-o"></i>
+                        <div class="star-rating d-flex justify-content-center">
+                            {% for num in "12345" %}
+                                {% if num|add:0 <= product.rating %}
+                                    <span class="mr-2"><i class="fas fa-star"></i></span>
+                                {% else %}
+
+                                    <span class="mr-2"><i class="far fa-star"></i></span>
+                                {% endif %}
+                            {% endfor %}
                         </div>
                     </div>
                     <a href="{% url 'add to cart' product.pk %}" class="btn btn-primary add_to_cart">Add to cart</a>

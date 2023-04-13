@@ -10,13 +10,18 @@
         </div>
         <div class="info_product_wrapper col-md-6 ">
             <h2 class="mb-3">{{ product.name }}</h2>
-            <div class=" stars mb-4">
-                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
-                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
-                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
-                <span class="mr-2"><i class="fa-solid fa-star"></i></span>
-                <span><i class="fa-solid fa-star-half-alt"></i></span>
-                <span class="ml-2 text-muted">(4.5)</span>
+            <div class="d-flex stars mb-4">
+                {% for num in "12345" %}
+                    {% if num|add:0 <= rating %}
+                        <span class="mr-2"><i class="fas fa-star"></i></span>
+                    {% else %}
+
+                        <span class="mr-2"><i class="far fa-star"></i></span>
+                    {% endif %}
+                {% endfor %}
+
+
+                <span class="ml-2 text-muted">{{ rating|floatformat:1 }}</span>
             </div>
 
             <div class="selling-price fs-3 d-inline">${{ product.selling_price|stringformat:'d' }}</div>
@@ -27,7 +32,7 @@
                 <div class="form-group">
                     <input type="number" class="form-control" id="quantity" name="quantity" min="1" max="10" value="1">
                 </div>
-                <button type="submit"  class="ml-4 btn btn-primary add_to_cart">Add to cart</button>
+                <button type="submit" class="ml-4 btn btn-primary add_to_cart">Add to cart</button>
             </form>
 
             <div class="in_stock mt-5 ">

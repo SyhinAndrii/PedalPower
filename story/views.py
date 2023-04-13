@@ -1,7 +1,6 @@
-
-
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from .models import Category, Product, Cart, Order, CartItem, OrderItem
+from .models import Category, Product, Cart, Order, CartItem, OrderItem, Feedback
 from django.contrib import messages
 
 
@@ -25,7 +24,8 @@ def view_products(request, category_slug):
     if products:
         context = {
             'products': products,
-            'category': category, }
+            'category': category,
+        }
         return render(request, "story/products/index.html", context=context)
 
     return redirect("categories")
@@ -33,9 +33,16 @@ def view_products(request, category_slug):
 
 def product_details_view(request, category_slug, product_id):
     product = Product.get_product_by_id(product_id)
+    product_feedbacks = Feedback.get_feedbacks_by_product(product)
+
+    # calculate average product rating
+    rating = Feedback.average_product_rating(product_feedbacks)
+
     if product:
         context = {
-            'product': product
+            'product': product,
+            'feedbacks': product_feedbacks,
+            'rating': rating
         }
         return render(request, "story/products/product_page.html", context=context)
     return redirect(request, 'categories')
@@ -72,3 +79,33 @@ def create_order(request):
         # Redirect to the order detail page
         messages.success(request, 'Your order has been accepted successfully')
         return redirect('home')
+
+
+def feedback(request):
+    if request.user.is_authenticated:
+
+        # get data from ajax
+        rating = request.POST.get("rating")
+        feedback_text = request.POST.get("feedback_text")
+
+        # create new Feedback object
+        feedback_obj = Feedback()
+        feedback_obj.user = request.user
+        feedback_obj.rate = rating
+        feedback_obj.description = feedback_text
+        feedback_obj.save()
+        product = Product.get_product_by_id(request.POST.get('product_id'))
+        feedback_obj.product.add(product)
+        product.rating = Feedback.average_product_rating(Feedback.get_feedbacks_by_product(product))
+        product.save()
+        messages.success(request, "Feedback sent successfully")
+        print(request.POST)
+        return JsonResponse({
+            "rating": rating,
+            "feedback_text": feedback_text,
+            "success": True
+        })
+    else:
+        return JsonResponse({
+            "success": False
+        })

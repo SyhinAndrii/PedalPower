@@ -1,53 +1,69 @@
-<div class="tab-pane" id="reviews-tab">
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-2">
-                    <img src="https://via.placeholder.com/100x100" alt="Reviewer Avatar"
-                         class="img-fluid rounded-circle">
-                </div>
-                <div class="col-md-10">
-                    <h5 class="card-title">John Doe</h5>
-                    <div class="mb-2">
-                        <span class="mr-2"><i class="fas fa-star"></i></span>
-                        <span class="mr-2"><i class="fas fa-star"></i></span>
-                        <span class="mr-2"><i class="fas fa-star"></i></span>
-                        <span class="mr-2"><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star-half-alt"></i></span>
-                        <span class="ml-2 text-muted">(4.5)</span>
+{% load static %}
+<div class="row tab-pane " id="reviews-tab">
+    <div class="col-md-8 float-start">
+        {% if not feedbacks %}
+            <h2 class="mt-5">No comments!</h2>
+        {% else %}
+            {% for comment in feedbacks %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img src="{% static 'images/user.png' %}" alt="Reviewer Avatar" width="100px"
+                                     class="img-fluid rounded-circle">
+                            </div>
+                            <div class="col-md-10">
+                                <h5 class="card-title">{{ comment.user.username }}</h5>
+                                <div class="mb-2">
+                                    {% for num in "12345" %}
+                                        {% if num|add:0 <= comment.rate %}
+                                            <span class="mr-2"><i class="fas fa-star"></i></span>
+                                        {% else %}
+
+                                            <span class="mr-2"><i class="far fa-star"></i></span>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <span class="ml-2 text-muted">{{ comment.rate|floatformat:1 }}</span>
+                                </div>
+                                <p class="card-text">{{ comment.description }}</p>
+                                <p class="card-text"><small class="text-muted">Posted on {{ comment.create_at }}</small>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam auctor euismod urna, sed tristique lectus pretium in. Proin in purus
-                        eget ante finibus feugiat ac nec sapien. Etiam auctor vel justo a
-                        faucibus.</p>
-                    <p class="card-text"><small class="text-muted">Posted 1 day ago</small></p>
                 </div>
-            </div>
-        </div>
+            {% endfor %}
+        {% endif %}
     </div>
-    <div class="card mb-3">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-2">
-                    <img src="https://via.placeholder.com/100x100" alt="Reviewer Avatar"
-                         class="img-fluid rounded-circle">
+
+
+    <div class="col-md-4 float-end">
+        <div class="justify-content-center  mt-3">
+            <form id="feedback_form" data-product="{{ product.pk }}">
+                {% csrf_token %}
+                <div class="form-group mb-3 d-flex flex-row-reverse justify-content-center">
+                    <input class="star" id="star-5" type="radio" name="rating" value="5">
+                    <label for="star-5" class="rating-star star"></label>
+                    <input class="star" id="star-4" type="radio" name="rating" value="4">
+                    <label for="star-4" class="rating-star star"></label>
+                    <input class="star" id="star-3" type="radio" name="rating" value="3">
+                    <label for="star-3" class="rating-star star"></label>
+                    <input class="star" id="star-2" type="radio" name="rating" value="2">
+                    <label for="star-2" class="rating-star star"></label>
+                    <input class="star " id="star-1" type="radio" name="rating" value="1">
+                    <label for="star-1" class="rating-star star"></label>
+
+
                 </div>
-                <div class="col-md-10">
-                    <h5 class="card-title">Jane Smith</h5>
-                    <div class="mb-2">
-                        <span class="mr-2"><i class="fas fa-star"></i></span>
-                        <span class="mr-2"><i class="fas fa-star"></i></span>
-                        <span class="mr-2"><i class="fas fa-star"></i></span>
-                        <span><i class="far fa-star"></i></span>
-                        <span class="ml-2 text-muted">(3.5)</span>
-                    </div>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Aliquam auctor euismod urna, sed tristique lectus pretium in. Proin in purus
-                        eget ante finibus feugiat ac nec sapien. Etiam auctor vel justo a
-                        faucibus.</p>
-                    <p class="card-text"><small class="text-muted">Posted 2 days ago</small></p>
+                <div class="form-group">
+                    <label for="feedback">Feedback</label>
+                    <textarea required class="form-control" id="feedback" rows="5" placeholder="Enter your feedback"
+                              name="feedback_text"></textarea>
                 </div>
-            </div>
+                <button type="submit" class="btn payment-btn w-100 mt-3">Send</button>
+            </form>
+
+
         </div>
     </div>
 </div>

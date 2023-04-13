@@ -3,6 +3,8 @@ import os.path
 from django.contrib.auth.models import User
 from django.db import models
 from datetime import datetime
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.db.models import QuerySet
 
 
 def get_category_path(instance, filename):
@@ -15,6 +17,9 @@ def get_product_path(instance, filename):
     now_time = datetime.now().strftime("%d_%m_%Y_%H:%M:%S ")
     filename = now_time + instance.name
     return os.path.join(f"uploads/products/{instance.category.slug}/", filename)
+
+
+
 
 
 class Category(models.Model):
@@ -72,6 +77,7 @@ class Product(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     specifications = models.OneToOneField(Specifications, on_delete=models.CASCADE)
     in_stock = models.BooleanField(default=True, help_text="is the product in stock")
+    rating = models.FloatField(default=0)
 
     def __str__(self):
         return self.name
@@ -167,3 +173,23 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f'{self.product.name} ({self.quantity})'
+
+
+class Feedback(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    description = models.TextField(blank=True, null=True)
+    rate = models.IntegerField(validators=(MinValueValidator(1), MaxValueValidator(5)))
+    product = models.ManyToManyField(Product)
+    create_at = models.DateTimeField(auto_now_add=True)
+
+    @classmethod
+    def get_feedbacks_by_product(cls, product: Product):
+        return cls.objects.filter(product=product)
+
+    @classmethod
+    def average_product_rating(cls, comments: QuerySet):
+        """return average 'product' rating if product has marks. Else return 0"""
+        if comments:
+            aver_rate = sum([comment.rate for comment in comments]) / len(comments)
+            return aver_rate
+        return 0
